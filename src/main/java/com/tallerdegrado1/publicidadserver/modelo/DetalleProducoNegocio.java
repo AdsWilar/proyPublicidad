@@ -22,4 +22,8 @@ public class DetalleProducoNegocio {
     private Integer idProducto;
     @Column(name = "id_negocio", nullable = false)
     private Integer idNegocio;
+    @ManyToOne
+    @JoinColumn(name = "id_producto", insertable = false, updatable = false)
+    private Producto producto;
+
 }
