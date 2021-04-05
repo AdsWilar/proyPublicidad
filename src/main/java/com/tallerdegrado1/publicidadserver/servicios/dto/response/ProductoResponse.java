@@ -11,5 +11,6 @@ public class ProductoResponse {
     private Integer id;
     private String nombre;
     private Integer idCategoria;
+    private String fotoProducto;
 
 }
