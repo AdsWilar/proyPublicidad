@@ -24,6 +24,9 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+import static com.tallerdegrado1.publicidadserver.config.ConstantePublicidad.CLAVE_BEARER;
 
 
 @Service
@@ -33,7 +36,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     private final UsuarioMapper usuarioMapper = new UsuarioMapper();
 
     @Override
-    public UsuarioResponse registrarUsuario(UsuarioRequest usuarioRequest) throws UsuarioExcepcion {
+    public void registrarUsuario(UsuarioRequest usuarioRequest) throws UsuarioExcepcion {
 
         Optional<Usuario> usuario = usuarioRepositorio.getUsuarioByUsu(usuarioRequest.getUsu());
         if (usuario.isPresent()) {
@@ -43,8 +46,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         String passEncriptada = encriptar(usuarioRequest.getPass());
         nuevoUsuario.setPass(passEncriptada);
         //saveAndFlush crea o actuliza
-       Usuario usuarioRegistrado= usuarioRepositorio.saveAndFlush(nuevoUsuario);
-        return usuarioMapper.toDto(usuarioRegistrado);
+        usuarioRepositorio.saveAndFlush(nuevoUsuario);
     }
 
     //findAll() buca todo en la BD
