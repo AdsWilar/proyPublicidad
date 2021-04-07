@@ -26,8 +26,8 @@ public class UsuarioRest {
 
     @PostMapping("/registrar")
     public GeneralResponse registrarUsuario(@RequestBody UsuarioRequest request) throws UsuarioExcepcion {
-        usuarioServicio.registrarUsuario(request);
-        return new GeneralResponse(true, null, "Usuario registrado con éxito");
+        UsuarioResponse usuarioResponse= usuarioServicio.registrarUsuario(request);
+        return new GeneralResponse(true, usuarioResponse, "Usuario registrado con éxito");
     }
 
     @GetMapping("/listar")

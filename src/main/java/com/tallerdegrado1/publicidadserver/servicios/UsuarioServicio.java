@@ -10,7 +10,7 @@ import com.tallerdegrado1.publicidadserver.servicios.dto.response.UsuarioRespons
 import java.util.List;
 
 public interface UsuarioServicio {
-    void registrarUsuario(UsuarioRequest usuarioRequest) throws UsuarioExcepcion;
+    UsuarioResponse registrarUsuario(UsuarioRequest usuarioRequest) throws UsuarioExcepcion;
     List<UsuarioResponse> listarUsuarios();
     LoginResponse login(LoginRequest loginRequest) throws UsuarioExcepcion, LoginExcepcion;
 }
